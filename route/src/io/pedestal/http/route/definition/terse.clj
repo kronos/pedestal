@@ -162,7 +162,7 @@
   These generated routes can be consumed by `expand-routes`"
   [route-map]
   (reduce (fn [acc [k v :as route]]
-            (let [verbs (select-keys v [:get :post :put :delete :any])
+            (let [verbs (select-keys v [:any :get :put :post :delete :patch :options :head])
                   interceptors (:interceptors v)
                   constraints (:constraints v)
                   subroutes (map #(apply hash-map %) (select-keys v (filter string? (keys v))))
